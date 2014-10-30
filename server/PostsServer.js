@@ -34,4 +34,13 @@ Meteor.methods({
             _id: _id,
         }
     },
-})
+});
+
+/* observing collection */
+var query = Posts.find({});
+var handle = query.observe({
+    removed: function(model) {
+        //removing related image, when post removed
+        Images.remove(model.imageId);
+    }
+});
