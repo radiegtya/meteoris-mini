@@ -1,12 +1,5 @@
 Template.postsIndex.helpers({
-    /* get related imageId from images collection */
-    image: function(){
-        return Images.findOne(this.imageId);
-    },
-    /* get related createdUserId from users collection */
-    user: function() {
-        return Meteor.users.findOne(this.createdUserId);
-    },
+
 });
 
 Template.postsIndex.events = {

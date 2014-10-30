@@ -17,6 +17,7 @@
                     <li><a href="{{pathFor 'sitesIndex'}}">Home</a></li>
                     <li><a href="{{pathFor 'postsIndex'}}">Posts</a></li>
                     <li class="dropdown">
+                        {{#if currentUser}}
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{currentUser.profile.name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Profile</a></li>
@@ -24,6 +25,9 @@
                             <li class="divider"></li>
                             <li id="btnLogout"><a href="#">Logout</a></li>
                         </ul>
+                        {{else}}
+                        <a href="{{pathFor 'usersLogin'}}">Login</a>
+                        {{/if}}
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

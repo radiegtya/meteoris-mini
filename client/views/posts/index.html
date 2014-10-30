@@ -48,7 +48,7 @@
                         <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
                         <td>{{title}}</td>
                         <td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>
-                        <td>{{user.profile.name}}</td>
+                        <td>{{createdUser.profile.name}}</td>
                         <td>
                             <a href="{{pathFor 'postsView'}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>
                             <a href="{{pathFor 'postsUpdate'}}" class="btn btn-default"><i class="glyphicon glyphicon-pencil"></i></a>
