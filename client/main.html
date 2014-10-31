@@ -7,11 +7,13 @@
 <template name="basic"> 
     {{> meteorisFlash}}
     <div class="content">
-        {{>yield region="templateBasicHeader"}}
+        <!--{{>yield region="templateBasicHeader"}}-->
+        {{> templateBasicHeader}}
         {{> status}}
         {{>yield}}
     </div>
-    {{>yield region="templateBasicFooter"}}
+    <!--{{>yield region="templateBasicFooter"}}-->
+    {{> templateBasicFooter}}
 </template>
 
 
