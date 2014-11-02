@@ -1,6 +1,6 @@
 Meteor.publishComposite('posts', function(doc, sort) {
-    doc.appId = App.id;    
-    console.log("subscribing some Posts with it's relation in App Id = "+ App.id);
+    doc.appId = App.id;
+    console.log("subscribing some Posts with it's relation in App Id = " + App.id);
     return{
         find: function() {
             return Posts.find(doc, sort);
@@ -16,7 +16,7 @@ Meteor.publishComposite('posts', function(doc, sort) {
             {
                 find: function(collection) {
                     return Meteor.users.find({
-                        $or:[
+                        $or: [
                             {_id: collection.createdUserId},
                             {_id: collection.updatedUserId},
                         ]
@@ -28,12 +28,22 @@ Meteor.publishComposite('posts', function(doc, sort) {
 });
 
 Meteor.methods({
-    "Posts.insert": function(doc){
+    "Posts.insert": function(doc) {
         var _id = Posts.insert(doc);
         return {
             _id: _id,
         }
     },
+    "Posts.write": function() {
+        var rootPath = process.env.PWD;        
+        fs.writeFile(rootPath + "/test.txt", "Hey there!", function(err) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log("The file was saved!");
+            }
+        });
+    }
 });
 
 /* observing collection */

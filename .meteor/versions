@@ -91,6 +91,9 @@ oauth2@1.1.1
 oauth@1.1.2
 observe-sequence@1.0.3
 ordered-dict@1.0.1
+peerlibrary:assert@0.2.5
+peerlibrary:blocking@0.4.2
+peerlibrary:fs@0.1.5
 pfafman:font-awesome-4@4.2.0_2
 pinglamb:bootstrap3@3.2.1
 raix:eventemitter@0.0.2
