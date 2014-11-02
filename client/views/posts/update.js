@@ -3,5 +3,6 @@ Template.postsUpdate.events = {
         e.preventDefault();
         Router.current()._post = true;
         Router.current().update(t);        
+        Router.current()._post = false;
     },
 };
