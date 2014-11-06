@@ -37,7 +37,7 @@
                     <tr>
                         <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>
                         <th id="btnSortTitle" class="{{meteorisGridViewSortClass 'title'}}">Title</th>                    
-                        <th>Image</th>                    
+                        <!--<th>Image</th>-->                    
                         <th>Created by</th>                    
                         <th style="width: 145px;">Actions</th>
                     </tr>
@@ -47,7 +47,7 @@
                     <tr>
                         <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
                         <td>{{title}}</td>
-                        <td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>
+                        <!--<td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>-->
                         <td>{{createdUser.profile.name}}</td>
                         <td>
                             <a href="{{pathFor 'replacementView'}}" class="btn btn-default"><i class="glyphicon glyphicon-eye-open"></i></a>

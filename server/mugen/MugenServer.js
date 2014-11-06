@@ -15,6 +15,9 @@ var Mugen = {
     routerTemplatePath: 'mugen/routers/templateRouter.js',
     routerDestinationPath: "client/routers/",
     routerPrefix: ".js",
+    serverTemplatePath: 'mugen/server/TemplateServer.js',
+    serverDestinationPath: "server/",
+    serverPrefix: ".js",
     /* write file to path */
     write: function(path, content) {
         fs.writeFile(this.rootPath + path, content, function(err) {
@@ -59,13 +62,20 @@ var Mugen = {
         var content = this.replaceAll(controllerTemplate, "Template", this.toTitleCase(collection));
         content = this.replaceAll(content, "template", collection.toLowerCase());
 
-        //reformat fields as string, and replace it with [mugenControllerFields]
+        //reformat fields as string, and replacing [criteriaFields]
         var stringFields = "";
         fields.forEach(function(obj) {
             var name = obj.name;
             stringFields += "{" + name + ": {$regex: search, $options: 'i'}},\n";
         });
-        content = content.replace("[mugenControllerFields]", stringFields);
+        content = content.replace("[criteriaFields]", stringFields);
+        //reformat fields as string, and replacing [docFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            stringFields += name + ": t.find('#" + name + "').value,\n";
+        });
+        content = content.replace("[docFields]", stringFields);
 
         //finally write it
         this.write(path, content);
@@ -214,6 +224,21 @@ var Mugen = {
         //finally write it
         this.write(path, content);
     },
+    /* generate your controller from template, then replacing with collection */
+    generateServer: function(collection) {
+        //get server template content
+        var serverTemplate = this.read(this.serverTemplatePath);
+
+        //get destinationPath, and set the file name
+        var path = this.serverDestinationPath + this.toTitleCase(collection) + this.serverPrefix;
+
+        //get the content, replace the template with desired collection
+        var content = this.replaceAll(serverTemplate, "Replacement", this.toTitleCase(collection));
+        content = this.replaceAll(content, "replacement", collection.toLowerCase());
+
+        //finally write it
+        this.write(path, content);
+    },
 };
 
 Meteor.methods({
@@ -234,5 +259,6 @@ Meteor.methods({
         Mugen.generateCollection(collection, fields);
         Mugen.generateView(collection, fields);
         Mugen.generateRouter(collection);
+        Mugen.generateServer(collection);
     },
 });

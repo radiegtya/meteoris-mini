@@ -15,7 +15,7 @@ TemplateController = MeteorisController.extend({
         var search = this.params.search ? this.params.search : "";
         return {
             $or: [
-                [mugenControllerFields]
+                [criteriaFields]
             ]
         };
     },
@@ -43,8 +43,7 @@ TemplateController = MeteorisController.extend({
     /* private get user input docs */
     _getDoc: function(t) {
         return {
-            title: t.find('#title').value,
-            content: t.find('#content').value,
+            [docFields]
         };
     },
     /* uploading file using cfs:fileSystem package + cfs:ejson */
