@@ -67,11 +67,11 @@ TemplateController = MeteorisController.extend({
     insert: function(t) {
         if (this._post) {
             //uploading file using cfs:fileSystem package + cfs:ejson
-            var imageId = this._uploadImage();
+            //var imageId = this._uploadImage();
 
             //set inserted doc
             var doc = this._getDoc(t);
-            doc.imageId = imageId;
+            //doc.imageId = imageId;
 
             Template.insert(doc, function(err, _id) {
                 if (err) {
@@ -91,15 +91,15 @@ TemplateController = MeteorisController.extend({
 
         if (this._post) {
             //uploading file using cfs:fileSystem package + cfs:ejson
-            var imageId = this._uploadImage();
+            //var imageId = this._uploadImage();
 
             //remove old image if user inputting new image        
-            if (imageId && model.imageId)
-                Images.remove(model.imageId);
+            //if (imageId && model.imageId)
+            //Images.remove(model.imageId);
 
             //set updated doc
             var doc = this._getDoc(t);
-            doc.imageId = imageId ? imageId : model.imageId;
+            //doc.imageId = imageId ? imageId : model.imageId;
 
             Template.update(_id, {$set: doc}, function(err) {
                 if (err) {

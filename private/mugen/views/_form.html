@@ -1,0 +1,12 @@
+<template name="replacement_form">
+    <form id="replacement_form">        
+        <div class="form-group {{#if error 'title'}}has-error{{/if}}">
+            <label for="title" class="control-label">Title *</label>
+            <input type="text" id="title" value="{{title}}" placeholder="Title" class="form-control" autofocus="true">
+            <span class="help-block">{{error "title"}}</span>
+        </div>
+        <button id="btnSave" type="submit" class="btn btn-success">Submit</button>                
+        <a href="{{pathFor 'replacementIndex'}}" class="btn btn-default">Back</a>                        
+    </form>
+</template>
+
