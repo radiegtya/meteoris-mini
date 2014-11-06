@@ -1,0 +1,26 @@
+<template name="mugen_form">
+    <form id="posts_form">        
+        <div class="form-group">
+            <label for="collection" class="control-label">Collection (lower case) *</label>
+            <input type="text" id="collection" value="" placeholder="Collection" class="form-control" autofocus="true">
+        </div>
+        <h4>Fields *</h4>
+        <div class="collectionFields">
+            <div class="form-group">
+                <label for="names" class="control-label">Name *</label>
+                <input type="text" class="names form-control" placeholder="eg: title">
+            </div>
+            <div class="form-group">
+                <label for="types" class="control-label">Type *</label>
+                <input type="text" class="types form-control" placeholder="eg: String/Number/Boolean">
+            </div>
+            <div class="form-group">
+                <label for="labels" class="control-label">Label</label>
+                <input type="text" class="labels form-control" value="" placeholder="eg: Title">
+            </div>
+        </div>
+        <a href="#" id="btnAddField" class="btn btn-success">Add Field</a>
+        <button id="btnSave" type="submit" class="btn btn-success">Submit</button>                
+    </form>
+</template>
+

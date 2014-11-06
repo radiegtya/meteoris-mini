@@ -1,31 +1,30 @@
-PostsController = MeteorisController.extend({
+TemplateController = MeteorisController.extend({
     /* get subscribtion from server with parameter criteria, and sort/limit */
     subscriptions: function() {
         var sort = MeteorisGridView.getSorting();
         sort.limit = this.limit();
 
-        this.subscription = this.subs.subscribe('posts', this.getCriteria(), sort);
+        this.subscription = this.subs.subscribe('template', this.getCriteria(), sort);
     },
     /* event searching data by user input with parameter */
     search: function(t) {
-        Router.go('postsIndex', {limit: this.limit(), search: t.find('#search').value});
+        Router.go('templateIndex', {limit: this.limit(), search: t.find('#search').value});
     },
     /* @override getCriteria */
     getCriteria: function() {
         var search = this.params.search ? this.params.search : "";
         return {
             $or: [
-                {title: {$regex: search, $options: 'i'}},
-                {content: {$regex: search, $options: 'i'}},
+                [mugenControllerFields]
             ]
         };
     },
     index: function() {
         var sort = MeteorisGridView.getSorting();
         sort.limit = this.limit();
-        var models = Posts.find(this.getCriteria(), sort);
+        var models = Template.find(this.getCriteria(), sort);
 
-        return this.render('postsIndex', {
+        return this.render('templateIndex', {
             data: {
                 ready: this.subscription.ready,
                 isEmpty: models.count() === 0 ? true : false,
@@ -35,7 +34,7 @@ PostsController = MeteorisController.extend({
         });
     },
     view: function() {
-        return this.render('postsView', {
+        return this.render('templateView', {
             data: {
                 model: this._loadModel(this.getId()),
             }
@@ -74,16 +73,16 @@ PostsController = MeteorisController.extend({
             var doc = this._getDoc(t);
             doc.imageId = imageId;
 
-            Posts.insert(doc, function(err, _id) {
+            Template.insert(doc, function(err, _id) {
                 if (err) {
                     MeteorisFlash.set('danger', err.message);
                     throw new Meteor.Error(err);
                 }
-                MeteorisFlash.set('success', "Success Inserting Posts");
-                Router.go('postsView', {_id: _id});
+                MeteorisFlash.set('success', "Success Inserting Template");
+                Router.go('templateView', {_id: _id});
             });
         }
-        return this.render('postsInsert', {});
+        return this.render('templateInsert', {});
     },
     /* event updating data */
     update: function(t) {
@@ -102,16 +101,16 @@ PostsController = MeteorisController.extend({
             var doc = this._getDoc(t);
             doc.imageId = imageId ? imageId : model.imageId;
 
-            Posts.update(_id, {$set: doc}, function(err) {
+            Template.update(_id, {$set: doc}, function(err) {
                 if (err) {
                     MeteorisFlash.set('danger', err.message);
                     throw new Meteor.Error(err);
                 }
-                MeteorisFlash.set('success', "Success Updating Posts");
+                MeteorisFlash.set('success', "Success Updating Template");
             });
-            Router.go('postsView', {_id: _id});
+            Router.go('templateView', {_id: _id});
         }
-        return this.render('postsUpdate', {
+        return this.render('templateUpdate', {
             data: {
                 model: model,
             }
@@ -119,15 +118,15 @@ PostsController = MeteorisController.extend({
     },
     /* event removing data by id */
     remove: function(_id) {
-        Posts.remove(_id, function(err) {
+        Template.remove(_id, function(err) {
             if (err) {
                 MeteorisFlash.set('danger', err.message);
                 throw new Meteor.Error(err);
             }
-            MeteorisFlash.set('success', "Success Removing Posts");
+            MeteorisFlash.set('success', "Success Removing Template");
         });
     },
     _loadModel: function(_id) {
-        return Posts.findOne(_id);
+        return Template.findOne(_id);
     },
 });

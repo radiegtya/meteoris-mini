@@ -27,6 +27,7 @@ Meteor.publishComposite('posts', function(doc, sort) {
     }
 });
 
+
 Meteor.methods({
     "Posts.insert": function(doc) {
         var _id = Posts.insert(doc);
@@ -34,16 +35,6 @@ Meteor.methods({
             _id: _id,
         }
     },
-    "Posts.write": function() {
-        var rootPath = process.env.PWD;        
-        fs.writeFile(rootPath + "/test.txt", "Hey there!", function(err) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log("The file was saved!");
-            }
-        });
-    }
 });
 
 /* observing collection */
