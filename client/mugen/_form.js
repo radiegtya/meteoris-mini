@@ -16,10 +16,15 @@ Template.mugen_form.events = {
         var collection = $(e.target).val();
         $(e.target).val(collection.toLowerCase());
     },
-    'click #btnAddField': function(e) {
+    'click .btnAddField': function(e) {
         e.preventDefault();
-        var html = $('.collectionFields').html();
+        var html = $('.collectionFields tr:first-child').html();
+        html = '<tr>' + html + '</tr>';
         $('.collectionFields').append(html);
+    },
+    'click .btnDeleteField': function(e) {
+        e.preventDefault();
+        $(e.target).parent().parent().remove();
     },
     'click #btnSave': function(e, t) {
         e.preventDefault();
