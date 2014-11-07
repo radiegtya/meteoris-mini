@@ -30,4 +30,6 @@ ground:db
 aldeed:autoform
 mizzao:autocomplete
 peerlibrary:fs
+spiderable
+gadicohen:phantomjs
 

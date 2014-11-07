@@ -35,8 +35,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>
-                        <th id="btnSortTitle" class="{{meteorisGridViewSortClass 'title'}}">Title</th>                    
+                        <th style="width: 30px;"><input type="checkbox" id="checkAll"/></th>                        
+                        [thFields]
                         <!--<th>Image</th>-->                    
                         <th>Created by</th>                    
                         <th style="width: 145px;">Actions</th>
@@ -46,7 +46,7 @@
                     {{#each models}}
                     <tr>
                         <td><input type="checkbox" class="checkAll" value="{{_id}}"/></td>
-                        <td>{{title}}</td>
+                        [tdFields]
                         <!--<td><img class="image" src="{{#if image}}{{app "baseUrl"}}{{image.url}}{{else}}{{app "baseUrl"}}/images/noimage.jpg{{/if}}"/></td>-->
                         <td>{{createdUser.profile.name}}</td>
                         <td>

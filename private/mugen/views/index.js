@@ -8,10 +8,7 @@ Template.replacementIndex.events = {
         if (confirm("Are you sure want to remove this data?"))
             Router.current().remove(this._id);
     },
-    /* sorting by parameter */
-    'click #btnSortTitle': function(e) {
-        MeteorisGridView.sort('title');
-    },
+    [sortFields]
     'keyup #search': function(e, t) {
         e.preventDefault();
         Router.current().search(t);        

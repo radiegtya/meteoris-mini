@@ -124,6 +124,21 @@ var Mugen = {
         var content_formJs = this.replaceAll(viewTemplate_formJs, "Replacement", this.toTitleCase(collection));
         content_formJs = this.replaceAll(content_formJs, "replacement", collection.toLowerCase());
 
+        //reformat fields as string, and replace it with [formFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            var type = obj.type;
+            var label = obj.label;
+            stringFields +=
+                    '<div class="form-group {{#if error ' + "'" + name + "'" + '}}has-error{{/if}}">\n' +
+                    '<label for="' + name + '" class="control-label">' + label + '*</label>\n' +
+                    '<input type="text" id="' + name + '" value="{{' + name + '}}" placeholder="' + label + '" class="form-control" autofocus="true">\n' +
+                    '<span class="help-block">{{error "' + name + '"}}</span>\n' +
+                    '</div>';
+        });
+        content_formHtml = content_formHtml.replace("[formFields]", stringFields);
+
         //finally write it
         this.write(path_formHtml, content_formHtml);
         this.write(path_formJs, content_formJs);
@@ -143,6 +158,36 @@ var Mugen = {
         contentindexHtml = this.replaceAll(contentindexHtml, "replacement", collection.toLowerCase());
         var contentindexJs = this.replaceAll(viewTemplateindexJs, "Replacement", this.toTitleCase(collection));
         contentindexJs = this.replaceAll(contentindexJs, "replacement", collection.toLowerCase());
+
+        //reformat fields as string, and replace it with [thFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            var label = obj.label;
+            stringFields += '<th id="btnSort' + label + '" class="{{meteorisGridViewSortClass ' + "'" + name + "'" + '}}">' + label + '</th>';
+        });
+        contentindexHtml = contentindexHtml.replace("[thFields]", stringFields);
+
+        //reformat fields as string, and replace it with [tdFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            stringFields += '<td>{{' + name + '}}</td>';
+        });
+        contentindexHtml = contentindexHtml.replace("[tdFields]", stringFields);
+
+        //reformat fields as string, and replace it with [sortFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            var label = obj.label;
+            stringFields +=
+                    "/* sorting by parameter */\n" +
+                    "'click #btnSort" + label + "': function(e) {\n" +
+                    "MeteorisGridView.sort('" + name + "');\n" +
+                    "},\n";
+        });
+        contentindexJs = contentindexJs.replace("[sortFields]", stringFields);
 
         //finally write it
         this.write(pathindexHtml, contentindexHtml);
@@ -203,6 +248,19 @@ var Mugen = {
         contentviewHtml = this.replaceAll(contentviewHtml, "replacement", collection.toLowerCase());
         var contentviewJs = this.replaceAll(viewTemplateviewJs, "Replacement", this.toTitleCase(collection));
         contentviewJs = this.replaceAll(contentviewJs, "replacement", collection.toLowerCase());
+
+        //reformat fields as string, and replace it with [trFields]
+        var stringFields = "";
+        fields.forEach(function(obj) {
+            var name = obj.name;
+            var label = obj.label;
+            stringFields +=
+                    "<tr>\n" +
+                    "<td><b>" + label + "</b></td>\n" +
+                    "<td>{{" + name + "}}</td>\n" +
+                    "</tr>\n";
+        });
+        contentviewHtml = contentviewHtml.replace("[trFields]", stringFields);
 
         //finally write it
         this.write(pathviewHtml, contentviewHtml);
