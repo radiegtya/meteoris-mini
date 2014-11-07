@@ -17,7 +17,7 @@ var Mugen = {
     routerPrefix: ".js",
     serverTemplatePath: 'mugen/server/TemplateServer.js',
     serverDestinationPath: "server/",
-    serverPrefix: ".js",
+    serverPrefix: "Server.js",
     /* write file to path */
     write: function(path, content) {
         fs.writeFile(this.rootPath + path, content, function(err) {
@@ -98,7 +98,13 @@ var Mugen = {
             var name = obj.name;
             var type = obj.type;
             var label = obj.label;
-            stringFields += name + ":{\ntype:" + type + ",\n label: '" + label + "',\n},\n";
+            var isRequired = obj.isRequired ? "optional: " + isRequired + ",\n" : "";
+            stringFields +=
+                    name + ":{\n" +
+                    "type:" + type + ",\n" +
+                    "label: '" + label + "',\n" +
+                    isRequired +
+                    "},\n";
         });
         content = content.replace("[collectionFields]", stringFields);
 
@@ -130,9 +136,10 @@ var Mugen = {
             var name = obj.name;
             var type = obj.type;
             var label = obj.label;
+            var isRequired = obj.isRequired ? "*" : "";
             stringFields +=
                     '<div class="form-group {{#if error ' + "'" + name + "'" + '}}has-error{{/if}}">\n' +
-                    '<label for="' + name + '" class="control-label">' + label + '*</label>\n' +
+                    '<label for="' + name + '" class="control-label">' + label + " " + isRequired +'</label>\n' +
                     '<input type="text" id="' + name + '" value="{{' + name + '}}" placeholder="' + label + '" class="form-control" autofocus="true">\n' +
                     '<span class="help-block">{{error "' + name + '"}}</span>\n' +
                     '</div>';

@@ -11,8 +11,17 @@
                 <input type="text" class="names form-control" placeholder="eg: title">
             </div>
             <div class="form-group">
-                <label for="types" class="control-label">Type *</label>
-                <input type="text" class="types form-control" placeholder="eg: String/Number/Boolean">
+                <label for="types" class="control-label">Type</label>
+                <select class="types">                     
+                    <option value="String" selected="selected">String</option>                    
+                    <option value="Number">Number</option>                    
+                    <option value="Boolean">Boolean</option>                    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="isRequired" class="control-label">Is Required *</label>
+                <input type="radio" class="isRequired" value="0" checked="checked"> No
+                <input type="radio" class="isRequired" value="1"> Yes
             </div>
             <div class="form-group">
                 <label for="labels" class="control-label">Label</label>
