@@ -1,14 +1,14 @@
-TemplateController = MeteorisController.extend({
+ReplacementController = MeteorisController.extend({
     /* get subscribtion from server with parameter criteria, and sort/limit */
     subscriptions: function() {
         var sort = MeteorisGridView.getSorting();
         sort.limit = this.limit();
 
-        this.subscription = this.subs.subscribe('template', this.getCriteria(), sort);
+        this.subscription = this.subs.subscribe('replacement', this.getCriteria(), sort);
     },
     /* event searching data by user input with parameter */
     search: function(t) {
-        Router.go('templateIndex', {limit: this.limit(), search: t.find('#search').value});
+        Router.go('replacementIndex', {limit: this.limit(), search: t.find('#search').value});
     },
     /* @override getCriteria */
     getCriteria: function() {
@@ -22,9 +22,9 @@ TemplateController = MeteorisController.extend({
     index: function() {
         var sort = MeteorisGridView.getSorting();
         sort.limit = this.limit();
-        var models = Template.find(this.getCriteria(), sort);
+        var models = Replacement.find(this.getCriteria(), sort);
 
-        return this.render('templateIndex', {
+        return this.render('replacementIndex', {
             data: {
                 ready: this.subscription.ready,
                 isEmpty: models.count() === 0 ? true : false,
@@ -34,7 +34,7 @@ TemplateController = MeteorisController.extend({
         });
     },
     view: function() {
-        return this.render('templateView', {
+        return this.render('replacementView', {
             data: {
                 model: this._loadModel(this.getId()),
             }
@@ -72,16 +72,16 @@ TemplateController = MeteorisController.extend({
             var doc = this._getDoc(t);
             //doc.imageId = imageId;
 
-            Template.insert(doc, function(err, _id) {
+            Replacement.insert(doc, function(err, _id) {
                 if (err) {
                     MeteorisFlash.set('danger', err.message);
                     throw new Meteor.Error(err);
                 }
-                MeteorisFlash.set('success', "Success Inserting Template");
-                Router.go('templateView', {_id: _id});
+                MeteorisFlash.set('success', "Success Inserting Replacement");
+                Router.go('replacementView', {_id: _id});
             });
         }
-        return this.render('templateInsert', {});
+        return this.render('replacementInsert', {});
     },
     /* event updating data */
     update: function(t) {
@@ -100,16 +100,16 @@ TemplateController = MeteorisController.extend({
             var doc = this._getDoc(t);
             //doc.imageId = imageId ? imageId : model.imageId;
 
-            Template.update(_id, {$set: doc}, function(err) {
+            Replacement.update(_id, {$set: doc}, function(err) {
                 if (err) {
                     MeteorisFlash.set('danger', err.message);
                     throw new Meteor.Error(err);
                 }
-                MeteorisFlash.set('success', "Success Updating Template");
+                MeteorisFlash.set('success', "Success Updating Replacement");
             });
-            Router.go('templateView', {_id: _id});
+            Router.go('replacementView', {_id: _id});
         }
-        return this.render('templateUpdate', {
+        return this.render('replacementUpdate', {
             data: {
                 model: model,
             }
@@ -117,15 +117,15 @@ TemplateController = MeteorisController.extend({
     },
     /* event removing data by id */
     remove: function(_id) {
-        Template.remove(_id, function(err) {
+        Replacement.remove(_id, function(err) {
             if (err) {
                 MeteorisFlash.set('danger', err.message);
                 throw new Meteor.Error(err);
             }
-            MeteorisFlash.set('success', "Success Removing Template");
+            MeteorisFlash.set('success', "Success Removing Replacement");
         });
     },
     _loadModel: function(_id) {
-        return Template.findOne(_id);
+        return Replacement.findOne(_id);
     },
 });

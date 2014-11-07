@@ -5,10 +5,10 @@
  * Ega Radiegtya / radiegtya@yahoo.co.id / 085641278479
  */
 
-Template = new Mongo.Collection("template");
+Replacement = new Mongo.Collection("replacement");
 
 var schemas = new SimpleSchema({
-    [mugenCollectionFields]
+    [collectionFields]
     /* AUTOVALUE */
     appId: {
         type: String,
@@ -58,9 +58,9 @@ var schemas = new SimpleSchema({
     },
 });
 
-Template.attachSchema(schemas);
+Replacement.attachSchema(schemas);
 
-Template.allow({
+Replacement.allow({
     insert: function(userId, doc) {
         return userId ? true : false;
     },
@@ -72,14 +72,14 @@ Template.allow({
     },
 });
 
-//activate groundDB for template collection to work offline
+//activate groundDB for replacement collection to work offline
 /* uncomment to use
- GroundDB(Template);
+ GroundDB(Replacement);
  */
 
 /* register helper for default relations */
 /* uncomment to use
- UI.registerHelper('template', function() {
- return Template.findOne(this.templateId);
+ UI.registerHelper('replacement', function() {
+ return Replacement.findOne(this.replacementId);
  });
  */

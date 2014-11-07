@@ -59,8 +59,8 @@ var Mugen = {
         var path = this.controllerDestinationPath + this.toTitleCase(collection) + this.controllerPrefix;
 
         //get the content, replace the template with desired collection
-        var content = this.replaceAll(controllerTemplate, "Template", this.toTitleCase(collection));
-        content = this.replaceAll(content, "template", collection.toLowerCase());
+        var content = this.replaceAll(controllerTemplate, "Replacement", this.toTitleCase(collection));
+        content = this.replaceAll(content, "replacement", collection.toLowerCase());
 
         //reformat fields as string, and replacing [criteriaFields]
         var stringFields = "";
@@ -89,8 +89,8 @@ var Mugen = {
         var path = this.collectionDestinationPath + this.toTitleCase(collection) + this.collectionPrefix;
 
         //get the content, replace the template with desired collection
-        var content = this.replaceAll(collectionTemplate, "Template", this.toTitleCase(collection));
-        content = this.replaceAll(content, "template", collection.toLowerCase());
+        var content = this.replaceAll(collectionTemplate, "Replacement", this.toTitleCase(collection));
+        content = this.replaceAll(content, "replacement", collection.toLowerCase());
 
         //reformat fields as string, and replace it with [mugenCollectionFields]
         var stringFields = "";
@@ -100,7 +100,7 @@ var Mugen = {
             var label = obj.label;
             stringFields += name + ":{\ntype:" + type + ",\n label: '" + label + "',\n},\n";
         });
-        content = content.replace("[mugenCollectionFields]", stringFields);
+        content = content.replace("[collectionFields]", stringFields);
 
         //finally write it
         this.write(path, content);
@@ -243,7 +243,7 @@ var Mugen = {
 
 Meteor.methods({
     "Mugen.write": function(path, content) {
-        Mugen.write(path);
+        Mugen.write(path, content);
     },
     "Mugen.read": function(path) {
         Mugen.read(path);
