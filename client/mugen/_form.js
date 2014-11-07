@@ -1,8 +1,5 @@
 Template.mugen_form.rendered = function() {
-    $('.types').select2({
-        placeholder: "Choose Data Type",
-        allowClear: true,
-    });
+
 };
 
 Template.mugen_form.helpers({
@@ -36,9 +33,9 @@ Template.mugen_form.events = {
         var labels = $('.labels').map(function() {
             return $(this).val();
         }).get();
+        var isRequireds = $('.isRequireds');
 
-        var isRequired = $('.isRequired:checked').val() == 0 ? false : true;
-        console.log(isRequired)
+
         //check whether collection cannot be empty
         if (!collection || collection == "") {
             var errMessage = "Collection is required";
@@ -63,6 +60,7 @@ Template.mugen_form.events = {
             var name = names[i];
             var type = types[i];
             var label = labels[i] ? labels[i] : toTitleCase(names[i]);
+            var isRequired = isRequireds[i].checked ? true : false;
             fields.push({
                 name: name,
                 type: type,
@@ -71,13 +69,13 @@ Template.mugen_form.events = {
             });
         }
 
-//        Meteor.call("Mugen.generateAll", collection, fields, function(err) {
-//            if (err)
-//                MeteorisFlash.set('danger', err.reason);
-//            else {
-//                MeteorisFlash.set('success', 'Success generating code!');
-//                Router.go('mugen');
-//            }
-//        });
+        Meteor.call("Mugen.generateAll", collection, fields, function(err) {
+            if (err)
+                MeteorisFlash.set('danger', err.reason);
+            else {
+                MeteorisFlash.set('success', 'Success generating code!');
+                Router.go('mugen');
+            }
+        });
     },
 };
