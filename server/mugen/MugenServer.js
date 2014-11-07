@@ -98,7 +98,7 @@ var Mugen = {
             var name = obj.name;
             var type = obj.type;
             var label = obj.label;
-            var isRequired = obj.isRequired ? "" : "optional: " + obj.isRequired + ",\n";
+            var isRequired = obj.isRequired ? "" : "optional: true,\n";
             stringFields +=
                     name + ":{\n" +
                     "type:" + type + ",\n" +
