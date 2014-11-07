@@ -1,8 +1,8 @@
-METEORIS v0.7.5
+METEORIS v0.9.2 <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=RSYJP7FJJ4V6Y" target="_blank"><img src="https://camo.githubusercontent.com/e14c85b542e06215f7e56c0763333ef1e9b9f9b7/68747470733a2f2f7777772e70617970616c6f626a656374732e636f6d2f656e5f55532f692f62746e2f62746e5f646f6e6174655f534d2e676966" alt="Donate" data-canonical-src="https://www.paypalobjects.com/id_ID/i/scr/pixel.gif" style="max-width:100%;"></a>
 ===============
 
 ###WHAT IS METEORIS?
-Meteoris is a Realtime Javascript Boilerplate base on Meteor Js framework v.0.9.x. 
+Meteoris is a Realtime Javascript Boilerplate base on Meteor Js framework v1.0. 
 It's help you structuring your Meteor Js apps, and there are many usefull packages inside.
 
 ###WHY USING METEORIS?
@@ -18,80 +18,41 @@ Meteoris uses standard, usefull, robust and stable packages like Iron Router and
 Here is the simple demo about how Meteoris works http://meteoris.piyiku.biz
 
 **Here is a list of packages which Meteoris uses:**
-- accounts-base              1.1.2  A user account system
-- accounts-facebook          1.0.2  Login service for Facebook accounts
-- accounts-google            1.0.2  Login service for Google accounts
-- accounts-password          1.0.3  Password support for accounts
-- aldeed:collection2         2.2.0  Automatic validation of insert and update o...
-- cfs:ejson-file             0.0.0  CollectionFS, FS.File as EJSON type
-- cfs:filesystem             0.0.0  Filesystem storage adapter for CollectionFS
-- cfs:gridfs                 0.0.0  GridFS storage adapter for CollectionFS
-- cfs:standard-packages      0.0.2  Filesystem for Meteor, collectionFS
-- francocatena:status        0.9.8  Display the connection status with the server
-- ground:db                  0.0.9  Ground Meteor.Collections offline
-- iron:router                0.9.4  Routing specifically designed for Meteor
-- jquery                     1.0.1  Manipulate the DOM using CSS selectors
-- lepozepo:accounting        1.0.0  Accounting.js -  number, money and currency...
-- meteor-platform            1.1.2  Include a standard set of Meteor packages i...
-- meteorhacks:subs-manager   1.2.0  Subscriptions Manager for Meteor
-- mizzao:timesync            0.2.2  NTP-style time synchronization between serv...
-- mrt:iron-router-progress   0.9.2  Progressbar for iron:router
-- mrt:moment                 2.8.1  Moment.js, a JavaScript date library for da...
-- mystor:device-detection    0.2.0  Client-Side Device Type Detection & Templat...
-- pfafman:font-awesome-4     4.2.0_1  Font awesome packaged for meteor
-- pinglamb:bootstrap3        3.2.1  Front-end framework from Twitter, version 3
-- reywood:publish-composite  1.3.2  Publish a set of related documents from mul...
-- sacha:spin                 2.0.4  Simple spinner package for Meteor
-- service-configuration      1.0.2  Manage the configuration for third-party se...
+- accounts-base                            1.1.2  A user account system
+- accounts-facebook                        1.0.2  Login service for Facebook ac...
+- accounts-google                          1.0.2  Login service for Google acco...
+- accounts-password                        1.0.4  Password support for accounts
+- aldeed:collection2                       2.2.0  Automatic validation of inser...
+- cfs:ejson-file                           0.0.0  CollectionFS, FS.File as EJSO...
+- cfs:filesystem                           0.0.0  Filesystem storage adapter fo...
+- cfs:gridfs                               0.0.0  GridFS storage adapter for Co...
+- cfs:standard-packages                    0.0.2  Filesystem for Meteor, collec...
+- cordova:com.phonegap.plugins.PushPlugin  https://github.com/phonegap-build/Pu...
+- francocatena:status                      1.0.2  Display the connection status...
+- ground:db                                0.0.9  Ground Meteor.Collections off...
+- iron:router                              1.0.0  Routing specifically designed...
+- jquery                                   1.0.1  Manipulate the DOM using CSS ...
+- lepozepo:accounting                      1.0.0  Accounting.js -  number, mone...
+- meteor-platform                          1.2.0  Include a standard set of Met...
+- meteorhacks:subs-manager                 1.2.0  Subscriptions Manager for Meteor
+- mizzao:timesync                          0.2.2  NTP-style time synchronizatio...
+- mrt:moment                               2.8.1  Moment.js, a JavaScript date ...
+- mystor:device-detection                  0.2.0  Client-Side Device Type Detec...
+- pfafman:font-awesome-4                   4.2.0_2  Font awesome packaged for m...
+- pinglamb:bootstrap3                      3.2.1  Front-end framework from Twit...
+- reywood:publish-composite                1.3.2  Publish a set of related docu...
+- sacha:spin                               2.0.4  Simple spinner package for Me...
+- service-configuration                    1.0.2  Manage the configuration for ...
+- tarang:gcm                               0.2.0  A wrapper for node-gcm
+
 
 
 **note: autopublish and insecure package are removed due to security reason.**
 
-###METEORIS ROADMAP AND CHANGELOG
-You can view our roadmap from this link. 
- https://trello.com/b/01SvtPLA/meteoris-roadmap.
-if you want to share your idea, just write it in our trello page from that link.
-
-###WHAT'S NEW IN V0.7.5
-- updating meteor to v0.9.4
-- adding mobile config to let you easily deploy apps
-
-###WHAT'S NEW IN V0.7.1
-- adding AppId field in every collection, so you can have many application using same database
-- Server now only Publish list of collection according to appId to specify the data.
-- now config are placed at lib, so both client and server can see it.
-- updating ground:db to version 0.0.9
-- adding video tutorial about basic usage of meteoris
-
-###WHAT'S NEW IN V0.6.4
-- updating core to meteor v0.9.3.1
-- adding mrt:iron-router-progress
-- adding loading when load more data in pagination
-- updating iron-router to v0.9.4
-
-###WHAT'S NEW IN V0.6.3
-- updating core to meteor v0.9.3
-
-###WHAT'S NEW IN V0.6.2
-- adding groundDB v0.0.6 support to make collection able to work offline (thanks to Raix).
-- adding reactive elapsed time functionality (ex: posted 5m ago like in facebook) in meteoris formatter package. 
-  You can just type {{meteorisFormatter "elapsedTime" yourDate}} in blaze template view.
-- updating aldeed:collection2 package to v.2.1.0.
-- now you can access meteoris demo from http://meteoris.piyiku.biz rather than http://piyiku.biz:3001
-
-###WHAT'S NEW IN V0.6.1
-- adding facebook login example
-- code refractoring for unused code
-- if there is no image to be shown, show noimage.jpg rather than blank in frontend/postsIndex
-
-###WHAT'S NEW IN V0.5.6
-- adding example to switching between template
-- adding example about how to separate backend and frontend page
-- now user is not required to be logged in to a view posts in frontend page
-
-###WHAT'S NEW IN V0.5.2
-- Now frontend and backend logic is separated
-- Now frontend and backend templates are separated
+###WHAT'S NEW IN V0.9.2
+- CODE GENERATOR WITH GUI :D
+- Brand new code structure. Now it's more like the famous Rails/Yii Php Framework/Laravel structure. 
+  It almost like MVC structure. So every coder in the world should try meteor :)
 
 ------------------------
 
@@ -169,7 +130,7 @@ function data is responsible  for storing dynamic data to be displayed in the vi
 
 *4. Create html page to be used with Controller*
 ```
-<template name="backend_postsIndex">
+<template name="backendPostsIndex">
 	<p>{{helloWorld}}</p>
 	<p>{{otherMessage}}</p>
 </template>
@@ -188,7 +149,7 @@ Router is responsible for url formatting, for example if you want to redirect us
 
 ```
     /* POSTS */
-    this.route('backend_postsIndex', { //targetted template
+    this.route('backendPostsIndex', { //targetted template
         path: 'backend/posts/index/', //desired path
         controller: Backend.PostsController, //targetted controller
     });
@@ -241,13 +202,65 @@ Now you should see "Hello World" and "my Name is Ega Wachid Radiegtya" message o
 **P. Uploading Files** 
 > Documentation are Coming Soon! For now you can try the code at Posts DEMO.
 
+###METEORIS ROADMAP AND CHANGELOG
+You can view our roadmap from this link. 
+ https://trello.com/b/01SvtPLA/meteoris-roadmap.
+if you want to share your idea, just write it in our trello page from that link.
+
+###WHAT'S NEW IN V0.9.1
+- updating meteor to v1.0
+- new iron router v1.0 support 
+- new observer in server (auto remove relation)
+- new relation global template so you can now call relation without having to query. Just like simple ORM
+(ex: Showing related images collection (image url) from posts collection -> {{#each posts}}{{image.url}}{{/each}}
+- renaming template which is using underscore(_) to lower/uppercase due to new iron router compatibility. 
+(ex: frontend_postsIndex to frontendPostsIndex)
+- adding push notification mobile example (this is still on alpha stage, please refer to example first)
+
+###WHAT'S NEW IN V0.7.5
+- updating meteor to v0.9.4
+- adding mobile config to let you easily deploy apps
+
+###WHAT'S NEW IN V0.7.1
+- adding AppId field in every collection, so you can have many application using same database
+- Server now only Publish list of collection according to appId to specify the data.
+- now config are placed at lib, so both client and server can see it.
+- updating ground:db to version 0.0.9
+- adding video tutorial about basic usage of meteoris
+
+###WHAT'S NEW IN V0.6.4
+- updating core to meteor v0.9.3.1
+- adding mrt:iron-router-progress
+- adding loading when load more data in pagination
+- updating iron-router to v0.9.4
+
+###WHAT'S NEW IN V0.6.3
+- updating core to meteor v0.9.3
+
+###WHAT'S NEW IN V0.6.2
+- adding groundDB v0.0.6 support to make collection able to work offline (thanks to Raix).
+- adding reactive elapsed time functionality (ex: posted 5m ago like in facebook) in meteoris formatter package. 
+  You can just type {{meteorisFormatter "elapsedTime" yourDate}} in blaze template view.
+- updating aldeed:collection2 package to v.2.1.0.
+- now you can access meteoris demo from http://meteoris.piyiku.biz rather than http://piyiku.biz:3001
+
+###WHAT'S NEW IN V0.6.1
+- adding facebook login example
+- code refractoring for unused code
+- if there is no image to be shown, show noimage.jpg rather than blank in frontend/postsIndex
+
+###WHAT'S NEW IN V0.5.6
+- adding example to switching between template
+- adding example about how to separate backend and frontend page
+- now user is not required to be logged in to a view posts in frontend page
+
+###WHAT'S NEW IN V0.5.2
+- Now frontend and backend logic is separated
+- Now frontend and backend templates are separated
+
 ### Contributing
 
 Anyone is welcome to contribute. Fork, make your changes, and then submit a pull request.
 
 You can also support us, to make meteoris improved and grow bigger.
-
-
-[![Support via Paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/id/cgi-bin/webscr?cmd=_flow&SESSION=zKUOwQZHSJJtz9XwCQmqNU9UKccGto1TrI4JRXQqLrXTvHFuvniAWCQxDKG&dispatch=5885d80a13c0db1f8e263663d3faee8dbd0a2170b502f343d92a90377a9956d7)
-
 
